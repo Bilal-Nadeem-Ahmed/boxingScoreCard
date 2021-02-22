@@ -50,7 +50,17 @@ const scoreCard = () => {
     scoreCardTableContainer.appendChild(addRoundButton);
     addRoundButton.addEventListener("click", (e) => {
       e.preventDefault();
-      console.log("addround");
+      const tableBody = document.querySelector("#scoretable");
+      const newRow = document.createElement("tr");
+      newRow.innerHTML =
+        ' <td><input class="f1round" min="7" max="10"  placeholder="10"  type="number" /></td> <td><input min="7" max="10"  placeholder="10" class="f2round" type="number" /></td>';
+
+      // max rounds 15
+      if (document.querySelectorAll(".f1round").length > 14) {
+        alert("Max Rounds Reached");
+      } else {
+        tableBody.appendChild(newRow);
+      }
     });
   };
   initialInput();

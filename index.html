@@ -17,10 +17,32 @@
               <th id="fighter2"></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="scoretable">
             <tr>
-              <td><input type="number" /></td>
-              <td><input type="number" /></td>
+              <td>
+                <input
+                  class="f1round"
+                  min="7"
+                  max="10"
+                  placeholder="10"
+                  type="number"
+                />
+              </td>
+              <td>
+                <input
+                  class="f2round"
+                  min="7"
+                  max="10"
+                  placeholder="10"
+                  type="number"
+                />
+              </td>
+            </tr>
+          </tbody>
+          <tbody id="totals">
+            <tr>
+              <td id="total-fighter-1"></td>
+              <td id="total-fighter-2"></td>
             </tr>
           </tbody>
         </table>
