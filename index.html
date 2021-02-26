@@ -39,22 +39,38 @@
               </td>
             </tr>
           </tbody>
-          <tbody id="totals">
+          <!-- <tbody id="totals">
             <tr>
               <td id="total-fighter-1"></td>
               <td id="total-fighter-2"></td>
             </tr>
-          </tbody>
+          </tbody> -->
         </table>
-        <!-- <table id="totals-table">
-          <thead>
-            <tr>
-              <th id="fighter1total">10</th>
-              <th id="fighter2total">20</th>
-            </tr>
-          </thead>
-        </table> -->
       </div>
+      <table id="totals-table">
+        <thead>
+          <tr>
+            <th>
+              <input
+                id="total-fighter-1"
+                min="10"
+                max="150"
+                disabled
+                type="number"
+              />
+            </th>
+            <th>
+              <input
+                id="total-fighter-2"
+                min="10"
+                max="150"
+                disabled
+                type="number"
+              />
+            </th>
+          </tr>
+        </thead>
+      </table>
     </div>
 
     <script src="./index.js"></script>

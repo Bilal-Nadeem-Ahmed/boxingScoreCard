@@ -1,7 +1,9 @@
 const scoreCard = () => {
   const initialInput = () => {
     const scorecardtable = document.querySelector(".scorecardtable");
+    const totalstable = document.querySelector("#totals-table");
     scorecardtable.style.display = "none";
+    totalstable.style.display = "none";
     const container = document.querySelector(".container");
     const namesInputContainer = document.createElement("div");
     namesInputContainer.className = "namesinputcontainer";
@@ -31,13 +33,14 @@ const scoreCard = () => {
     console.log(inputFirstFighter.value, inputSecondFighter.value);
     const scoreCardTableContainer = document.querySelector(".tablediv");
     const scoreCardTable = document.querySelector(".scorecardtable");
+    const totalstable = document.querySelector("#totals-table");
+
     const namesInputContainer = document.querySelector(".namesinputcontainer");
     namesInputContainer.style.display = "none";
     scoreCardTable.style.display = "block";
+
     const totalFighter1Input = document.querySelector("#total-fighter-1");
     const totalFighter2Input = document.querySelector("#total-fighter-2");
-    const fighter1rounds = document.querySelectorAll(".f1round");
-    const fighter2rounds = document.querySelectorAll(".f2round");
 
     const firstFighterHeading = document.querySelector("#fighter1");
     const secondFighterHeading = document.querySelector("#fighter2");
@@ -57,6 +60,9 @@ const scoreCard = () => {
     addRoundButton.innerText = "+";
     scoreCardTableContainer.appendChild(addRoundButton);
     addRoundButton.addEventListener("click", (e) => {
+      const fighter1rounds = document.querySelectorAll(".f1round");
+      const fighter2rounds = document.querySelectorAll(".f2round");
+
       e.preventDefault();
       const tableBody = document.querySelector("#scoretable");
       const newRow = document.createElement("tr");
@@ -72,15 +78,24 @@ const scoreCard = () => {
         if (document.querySelectorAll(".f1round").length > 14) {
           alert("Max Rounds Reached");
         } else {
+          totalstable.style.display = "block";
           tableBody.appendChild(newRow);
-        }
-      }
+          // get totals from rounds and add them to totals
+          let t1 = [];
+          let t2 = [];
+          for (let i = 0; i < fighter1rounds.length; i++) {
+            t1.push(Number(fighter1rounds[i].value));
+            t2.push(Number(fighter2rounds[i].value));
+          }
+          const reducer = (accumulator, currentValue) =>
+            accumulator + currentValue;
 
-      // get totals from rounds and add them to totals
-      let t1 = [];
-      for (let i = 0; i < totalFighter1Input.length; i++) {
-        console.log("hello");
-        t1.push(parseInt(totalFighter1Input[i].value));
+          let reducedt1 = t1.reduce(reducer);
+          let reducedt2 = t2.reduce(reducer);
+
+          totalFighter1Input.value = reducedt1;
+          totalFighter2Input.value = reducedt2;
+        }
       }
     });
   };
