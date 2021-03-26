@@ -53,9 +53,7 @@ const scoreCard = () => {
     }
 
     const addRoundButton = document.createElement("button");
-    // calculate totals
-
-    // calculate totals
+    
 
     addRoundButton.innerText = "+";
     scoreCardTableContainer.appendChild(addRoundButton);
